@@ -30,7 +30,7 @@ public extension CssProviderProtocol {
     /// - Parameter data: the CSS data represented as a String
     /// - Throws: an `ErrorType` if there is an issue with the CSS
     @inlinable func load(from data: String) {
-        return load(from: data, length: -1)
+        return loadFrom(data: data, length: -1)
     }
 }
 
