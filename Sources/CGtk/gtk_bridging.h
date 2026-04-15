@@ -599,13 +599,17 @@ struct _GtkWindowHandle {};
 
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
 #include <sys/types.h>
+#ifndef _WIN32
 #include <unistd.h>
 #include <termios.h>
+#endif
 #include <gdk/gdk.h>
 #include <gsk/gsk.h>
 #include <gtk/gtkimmodule.h>
 #include <gtk/gtk.h>
+#ifndef _WIN32
 #include <gtk/gtkunixprint.h>
+#endif
 
 #if (GTK_MAJOR_VERSION == 4 && GTK_MINOR_VERSION < 10)
 struct _GtkAccessibleInterface {};
