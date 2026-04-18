@@ -597,6 +597,11 @@ struct _GtkWidgetPaintable {};
 struct _GtkWindowControls {};
 struct _GtkWindowHandle {};
 
+// gtk-4.24
+struct _GtkEnumList {};
+struct _GtkEnumListItem {};
+struct _GtkSvgWidget {};
+
 #define GLIB_DISABLE_DEPRECATION_WARNINGS
 #include <sys/types.h>
 #ifndef _WIN32
