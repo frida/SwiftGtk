@@ -2,6 +2,12 @@
 
 import PackageDescription
 
+#if os(Windows)
+let cgtkPkgConfig = "gtk4"
+#else
+let cgtkPkgConfig = "gtk4-unix-print"
+#endif
+
 let package = Package(
     name: "Gtk",
     products: [ .library(name: "Gtk", targets: ["Gtk"]) ],
@@ -13,7 +19,7 @@ let package = Package(
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ],
     targets: [
-        .systemLibrary(name: "CGtk", pkgConfig: "gtk4-unix-print",
+        .systemLibrary(name: "CGtk", pkgConfig: cgtkPkgConfig,
 	    providers: [
 		.brew(["gtk4", "glib", "glib-networking", "gobject-introspection"]),
 		.apt(["libgtk-4-dev", "libglib2.0-dev", "glib-networking", "gobject-introspection", "libgirepository1.0-dev"])
