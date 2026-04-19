@@ -103,7 +103,7 @@ public extension Application {
     @inlinable convenience init?(id: UnsafePointer<gchar>? = nil, flags: ApplicationFlags = []) {
         let rv: UnsafeMutablePointer<GtkApplication>?
         if let application_id = id {
-            GLib.set(applicationName: application_id)
+            GLib.set(applicationName: String(cString: application_id))
             rv = gtk_application_new(id, flags.value)
         } else {
             rv = gtk_application_new(nil, flags.value)
@@ -188,7 +188,7 @@ public extension Application {
         sharedMutex.lock()
         if let sharedApp = Application._shared {
             application = sharedApp
-            application.set(applicationID: name)
+            application.set(applicationID: name.map { String(cString: $0) })
             application.set(flags: f)
         } else {
             guard let app = Application(id: name, flags: f) else { sharedMutex.unlock() ; return nil }
