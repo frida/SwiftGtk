@@ -20,7 +20,7 @@ public extension FileChooserNative {
     /// - Parameter cancelLabel: Text of the cancel button or `nil` for the defaults
     /// - Note: ``FileChooserNative`` has been deprecated in gtk-4.10.  Use ``FileDialog`` instead.
     @inlinable convenience init(title: UnsafePointer<gchar>! = nil, action: FileChooserAction = .open, acceptLabel: UnsafePointer<gchar>? = nil, cancelLabel: UnsafePointer<gchar>? = nil) {
-        self.init(gtk_file_chooser_native_new(title, nil, action, acceptLabel, cancelLabel))
+        self.init(gtk_file_chooser_native_new(title, nil, action.value, acceptLabel, cancelLabel))
     }
 
     /// Convenence initialiser to create a new, native file chooser
@@ -31,6 +31,6 @@ public extension FileChooserNative {
     /// - Parameter cancelLabel: Text of the cancel button or `nil` for the default
     /// - Note: ``FileChooserNative`` has been deprecated in gtk-4.10.  Use ``FileDialog`` instead.
     @inlinable convenience init<W: WindowProtocol>(title: UnsafePointer<gchar>! = nil, parent: W, action: FileChooserAction = .open, acceptLabel: UnsafePointer<gchar>? = nil, cancelLabel: UnsafePointer<gchar>? = nil) {
-        self.init(gtk_file_chooser_native_new(title, parent.window_ptr, action, acceptLabel, cancelLabel))
+        self.init(gtk_file_chooser_native_new(title, parent.window_ptr, action.value, acceptLabel, cancelLabel))
     }
 }
